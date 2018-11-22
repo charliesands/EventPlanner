@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EventPlanner
 {
-    public class DinnerParty
+    class DinnerParty
     {
+        public const int CostOfFoodPerPerson = 25;
         public int NumberOfPeople;
         public decimal CostOfBeveragesPerPerson;
-        public decimal CostOfDecorations;
-        public const int CostOfFoodPerPerson = 25;
+        public decimal CostOfDecorations = 0;
 
         public void SetHealthyOption(bool healthyOption)
         {

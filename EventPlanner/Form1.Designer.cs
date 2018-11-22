@@ -67,6 +67,7 @@
             0,
             0,
             0});
+            this.numPeople.ValueChanged += new System.EventHandler(this.numPeople_ValueChanged);
             // 
             // fancyBox
             // 
@@ -79,6 +80,7 @@
             this.fancyBox.TabIndex = 2;
             this.fancyBox.Text = "Fancy Decorations";
             this.fancyBox.UseVisualStyleBackColor = true;
+            this.fancyBox.CheckedChanged += new System.EventHandler(this.fancyBox_CheckedChanged);
             // 
             // healthyBox
             // 
@@ -89,6 +91,7 @@
             this.healthyBox.TabIndex = 3;
             this.healthyBox.Text = "Healthy Option";
             this.healthyBox.UseVisualStyleBackColor = true;
+            this.healthyBox.CheckedChanged += new System.EventHandler(this.healthyBox_CheckedChanged);
             // 
             // label2
             // 
@@ -112,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(178, 184);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.healthyBox);
