@@ -10,45 +10,55 @@ namespace EventPlanner
     class DinnerParty
     {
         public const int CostOfFoodPerPerson = 25;
-        public int NumberOfPeople;
-        public decimal CostOfBeveragesPerPerson;
-        public decimal CostOfDecorations = 0;
-
-        public void SetHealthyOption(bool healthyOption)
+        public int NumberOfPeople { get; set; }
+        public bool FancyDecorations { get; set; }
+        public bool HealthyOption { get; set; }
+        
+        public DinnerParty(int numberOfPeople, bool healthyOption, bool fancyDecorations)
         {
-            if (healthyOption)
-            {
-                CostOfBeveragesPerPerson = 5.00M;
-            }
-            else
-            {
-                CostOfBeveragesPerPerson = 20.00M;
-            }
+            NumberOfPeople = numberOfPeople;
+            HealthyOption = healthyOption;
+            FancyDecorations = fancyDecorations;
         }
 
-        public void CalculateCostOfDecorations(bool fancy)
+        private decimal CalculateCostOfDecorations()
         {
-            if (fancy)
+            decimal costOfDecorations;
+            if (FancyDecorations)
             {
-                CostOfDecorations = (NumberOfPeople * 15.00M) + 50M;
+                costOfDecorations = (NumberOfPeople * 15.00M) + 50M;
             }
             else
             {
-                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M;
+                costOfDecorations = (NumberOfPeople * 7.50M) + 30M;
             }
+            return costOfDecorations;
+        }
+        
+        private decimal CalculateCostOfBeveragesPerPerson()
+        {
+            decimal costOfBeveragesPerPerson;
+            if (HealthyOption)
+            {
+                costOfBeveragesPerPerson = 5.00M;
+            }
+            else
+            {
+                costOfBeveragesPerPerson = 20.00M;
+            }
+            return costOfBeveragesPerPerson;
         }
 
-        public decimal CalculateCost(bool healthyOption)
+        public decimal Cost
         {
-            decimal totalCost = CostOfDecorations + ((CostOfBeveragesPerPerson + CostOfFoodPerPerson) * NumberOfPeople);
-            if (healthyOption)
+            get{
+            decimal totalCost = CalculateCostOfDecorations();
+            totalCost += ((CalculateCostOfBeveragesPerPerson() + CostOfFoodPerPerson) * NumberOfPeople);
+            if (HealthyOption)
             {
-                return totalCost * .95M;
+                totalCost *= .95M;
             }
-            else
-            {
-                return totalCost;
-            }
+            return totalCost;  }
         }
     }
 }
